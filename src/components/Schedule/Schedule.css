@@ -1,0 +1,55 @@
+#schedule {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  background: white;
+}
+
+#schedule tr td:nth-child(n + 2) {
+  font-size: 11px;
+  cursor: pointer;
+}
+
+#schedule tr th,
+#schedule tr td {
+  position: relative;
+  /*
+  height temporarily decreased until the covid go away
+  height: 46px;
+  */
+  height: 38px;
+  padding: 0 8px;
+  text-align: right;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: #d9d9d9 solid thin;
+}
+
+#schedule tr td:after {
+  content: "";
+  position: absolute;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  padding: 7px;
+  top: 0;
+  left: 0;
+  font-family: "Material Icons";
+  font-size: 16px;
+}
+
+#schedule tr td:hover:after {
+  background-color: #f3f3f3;
+}
+
+#schedule tr td.locked:after {
+  content: "\e897";
+}
+
+#schedule tr td:not(.locked):hover:after {
+  content: "\e897";
+}
+
+#schedule tr td.locked:hover:after {
+  content: "\e898";
+}

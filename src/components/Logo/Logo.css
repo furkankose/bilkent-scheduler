@@ -1,0 +1,27 @@
+#bilkent-scheduler {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  opacity: 0.5;
+}
+
+#bilkent-scheduler:hover {
+  opacity: 0.4;
+}
+
+#scheduler-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+  color: white;
+  margin-left: 12px;
+}
+
+#bilkent-logo {
+  width: 36px;
+  height: auto;
+  display: block;
+  padding: 1px;
+  background: white;
+  border-radius: 50%;
+}

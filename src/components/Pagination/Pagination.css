@@ -1,0 +1,54 @@
+#pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 50px;
+  margin: 30px auto 0 auto;
+  color: #ffffff;
+  transition: 0.7s ease all;
+}
+
+#pagination.hidden {
+  pointer-events: none;
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+}
+
+#prev,
+#next {
+  cursor: pointer;
+  font-size: 64px;
+  opacity: 0.8;
+}
+
+#prev:hover,
+#next:hover {
+  opacity: 1;
+}
+
+#prev.disabled,
+#next.disabled {
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+#pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#title {
+  font-size: 12px;
+  position: absolute;
+  top: -15px;
+  opacity: 0.4;
+}
+
+#page-numbers {
+  font-size: 24px;
+  margin: 0 24px;
+}

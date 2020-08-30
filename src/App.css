@@ -1,0 +1,67 @@
+body {
+  font-family: Montserrat;
+  font-size: 13px;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+      45deg,
+      rgb(19, 73, 95),
+      rgb(118, 75, 226),
+      rgb(131, 115, 198),
+      rgb(119, 211, 185)
+    )
+    fixed;
+}
+
+#root {
+  width: calc(100% - 32px);
+  min-height: calc(100vh - 32px);
+  padding: 16px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  margin-bottom: 24px;
+}
+
+#selectors {
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+#schedule-details {
+  padding-right: 5px;
+}
+
+.paper {
+  padding: 16px;
+}
+
+#schedule-details .paper {
+  height: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#schedule-table {
+  padding-left: 12px;
+}
+
+#capture-button {
+  margin-left: auto;
+}
+
+.introjs-tooltipbuttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.introjs-tooltipbuttons .introjs-donebutton {
+  order: 1;
+  margin-right: 0;
+}
