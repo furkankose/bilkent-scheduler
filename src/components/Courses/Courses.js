@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 
 import { Icon, IconButton } from "@material-ui/core";
 
@@ -18,7 +19,7 @@ const status = {
 };
 
 const Courses = ({
-  courses = [],
+  courses,
   isFailed,
   onCourseEdit,
   onCourseRemove,
@@ -97,6 +98,17 @@ const Courses = ({
       </tbody>
     </table>
   );
+};
+
+Courses.defaultProps = {
+  courses: [],
+};
+
+Courses.propTypes = {
+  courses: PropTypes.arrayOf(PropTypes.object),
+  isFailed: PropTypes.bool.isRequired,
+  onCourseEdit: PropTypes.func.isRequired,
+  onCourseRemove: PropTypes.func.isRequired,
 };
 
 export default memo(Courses);

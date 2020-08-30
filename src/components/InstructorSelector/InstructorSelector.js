@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -76,6 +77,13 @@ const InstructorSelector = ({ show, courses, onApply, onClose }) => {
       </DialogActions>
     </Dialog>
   );
+};
+
+InstructorSelector.propTypes = {
+  show: PropTypes.bool.isRequired,
+  courses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onApply: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default memo(InstructorSelector);

@@ -1,5 +1,7 @@
 import React, { memo } from "react";
-import classnames from "classnames";
+import PropTypes from "prop-types";
+
+import TableCell from "./Cell";
 
 import "./Schedule.css";
 
@@ -8,10 +10,9 @@ import hours from "../../constants/hours";
 import colors from "../../constants/colors";
 
 const Schedule = ({
-  courses = [],
-  timeslots = [],
+  courses,
+  timeslots,
   excludedTimeslots,
-  isCovidSemester,
   onCellClick,
   ...props
 }) => {
@@ -48,39 +49,13 @@ const Schedule = ({
     return { style: { color: colors[courseIndex] } };
   };
 
-  const TableCell = ({ rowIndex, columnIndex, key }) => {
-    const cellIndex = rowIndex * 5 + columnIndex;
-    const isEmpty = isTimeslotEmpty(cellIndex);
-
-    const cellClasses = classnames({
-      selected: !isEmpty,
-      locked: excludedTimeslots[cellIndex],
-    });
-
-    return (
-      <td
-        className={cellClasses}
-        onClick={() => onCellClick(cellIndex)}
-        key={key}
-      >
-        {!isEmpty && (
-          <>
-            <b {...getColorStyle(cellIndex)}>{getCourseCode(cellIndex)}</b>
-            <br />
-            <small>{getClassroom(cellIndex)}</small>
-          </>
-        )}
-      </td>
-    );
-  };
-
   return (
     <table id="schedule" {...props}>
       <thead>
         <tr>
           <th>&nbsp;</th>
           {days.map((day) => (
-            <th>{day}</th>
+            <th key={`${day}`}>{day}</th>
           ))}
         </tr>
       </thead>
@@ -89,8 +64,16 @@ const Schedule = ({
           <tr key={hour}>
             <>
               <th>{hour}</th>
-              {days.map((key, columnIndex) => (
-                <TableCell {...{ rowIndex, columnIndex, key }} />
+              {days.map((day, columnIndex) => (
+                <TableCell
+                  colorStyle={getColorStyle(rowIndex * 5 + columnIndex)}
+                  courseCode={getCourseCode(rowIndex * 5 + columnIndex)}
+                  classroom={getClassroom(rowIndex * 5 + columnIndex)}
+                  isExcluded={excludedTimeslots[rowIndex * 5 + columnIndex]}
+                  isEmpty={isTimeslotEmpty(rowIndex * 5 + columnIndex)}
+                  onClick={() => onCellClick(rowIndex * 5 + columnIndex)}
+                  key={`${hour}-${day}`}
+                />
               ))}
             </>
           </tr>
@@ -98,6 +81,18 @@ const Schedule = ({
       </tbody>
     </table>
   );
+};
+
+Schedule.defaultProps = {
+  courses: [],
+  timeslots: {},
+};
+
+Schedule.propTypes = {
+  courses: PropTypes.arrayOf(PropTypes.object),
+  timeslots: PropTypes.shape({}),
+  excludedTimeslots: PropTypes.shape({}).isRequired,
+  onCellClick: PropTypes.func.isRequired,
 };
 
 export default memo(Schedule);

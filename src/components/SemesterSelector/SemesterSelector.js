@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 
 import { Autocomplete } from "@material-ui/lab";
 import { TextField } from "@material-ui/core";
@@ -27,5 +28,15 @@ const SemesterSelector = ({ semesters, selectedSemester, onChange }) => (
     }}
   />
 );
+
+SemesterSelector.defaultProps = {
+  selectedSemester: null,
+};
+
+SemesterSelector.propTypes = {
+  semesters: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selectedSemester: PropTypes.shape({}),
+  onChange: PropTypes.func.isRequired,
+};
 
 export default memo(SemesterSelector);

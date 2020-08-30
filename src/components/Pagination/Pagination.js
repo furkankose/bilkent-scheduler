@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 import { useKeyPressEvent } from "react-use";
 import classnames from "classnames";
 
@@ -50,6 +51,13 @@ const Pagination = ({
       </span>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  title: PropTypes.string.isRequired,
+  activePage: PropTypes.number.isRequired,
+  numberOfPages: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default memo(Pagination);

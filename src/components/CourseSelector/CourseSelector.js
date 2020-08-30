@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 
 import { Autocomplete } from "@material-ui/lab";
 import { TextField } from "@material-ui/core";
@@ -45,5 +46,11 @@ const CourseSelector = ({ offerings, selectedCourses, onChange }) => (
     }}
   />
 );
+
+CourseSelector.propTypes = {
+  offerings: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selectedCourses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default memo(CourseSelector);
