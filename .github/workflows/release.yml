@@ -6,8 +6,12 @@ on:
       - master
 
 jobs:
-  lint:
+  release:
     runs-on: ubuntu-latest
+
+    env:
+      REACT_APP_GA_TRACKING_ID: "${{ secrets.REACT_APP_GA_TRACKING_ID }}"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
