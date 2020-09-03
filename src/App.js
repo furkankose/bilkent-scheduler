@@ -171,7 +171,7 @@ const App = () => {
       <Container id="container">
         <Paper id="selectors" elevation={6} data-html2canvas-ignore>
           <Grid container spacing={2} alignItems="center">
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={4} lg={3}>
               <SemesterSelector
                 {...{
                   semesters,
@@ -180,7 +180,7 @@ const App = () => {
                 }}
               />
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} sm={8} lg={9}>
               <CourseSelector
                 {...{
                   offerings,
@@ -192,8 +192,8 @@ const App = () => {
           </Grid>
         </Paper>
 
-        <Grid container>
-          <Grid id="schedule-details" item xs={3}>
+        <Grid id="main" container>
+          <Grid id="schedule-details" item xs={12} sm={4} lg={3}>
             <Paper className="paper pb-0" elevation={6}>
               <Courses
                 {...{
@@ -234,7 +234,7 @@ const App = () => {
               </Box>
             </Paper>
           </Grid>
-          <Grid id="schedule-table" item xs={9}>
+          <Grid id="schedule-table" item xs={12} sm={8} lg={9}>
             <Paper className="paper" elevation={6}>
               <Schedule
                 {...{
@@ -264,7 +264,7 @@ const App = () => {
         />
       </Container>
 
-      <Box>
+      <Box id="logo">
         <Link
           href="https://www.youtube.com/watch?v=XiLBOnqhGdY"
           target="_blank"

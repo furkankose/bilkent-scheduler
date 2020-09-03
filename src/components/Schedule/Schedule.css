@@ -26,6 +26,19 @@
   border: #d9d9d9 solid thin;
 }
 
+@media only screen and (max-width: 599px) {
+  #schedule tr td:nth-child(n + 2),
+  #schedule tr th {
+    font-size: 9px;
+  }
+}
+
+#schedule tr th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #schedule tr td:after {
   content: "";
   position: absolute;

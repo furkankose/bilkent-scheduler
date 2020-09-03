@@ -16,6 +16,16 @@
   margin-top: 0;
 }
 
+@media only screen and (max-width: 599px) {
+  #pagination {
+    order: 1;
+  }
+
+  #pagination:not(.hidden) {
+    margin: 10px auto;
+  }
+}
+
 #prev,
 #next {
   cursor: pointer;
