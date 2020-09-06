@@ -4,6 +4,6 @@ export default [
   "WEDNESDAY",
   "THURSDAY",
   "FRIDAY",
-  "SATURDAN",
+  "SATURDAY",
   "SUNDAY",
 ];
