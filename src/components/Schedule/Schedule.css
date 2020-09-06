@@ -29,7 +29,13 @@
 @media only screen and (max-width: 599px) {
   #schedule tr td:nth-child(n + 2),
   #schedule tr th {
+    /*
+    font-size and padding temporarily decreased until the covid go away
     font-size: 9px;
+    padding: 0 6px;
+    */
+    font-size: 8px;
+    padding: 0 4px;
   }
 }
 

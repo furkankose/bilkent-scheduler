@@ -9,6 +9,8 @@ import days from "../../constants/days";
 import hours from "../../constants/hours";
 import colors from "../../constants/colors";
 
+const TOTAL_DAYS = days.length;
+
 const Schedule = ({
   courses,
   timeslots,
@@ -60,18 +62,18 @@ const Schedule = ({
         </tr>
       </thead>
       <tbody>
-        {hours.map((hour, rowIndex) => (
+        {hours.map((hour, hIndex) => (
           <tr key={hour}>
             <>
               <th>{hour}</th>
-              {days.map((day, columnIndex) => (
+              {days.map((day, dIndex) => (
                 <TableCell
-                  colorStyle={getColorStyle(rowIndex * 5 + columnIndex)}
-                  courseCode={getCourseCode(rowIndex * 5 + columnIndex)}
-                  classroom={getClassroom(rowIndex * 5 + columnIndex)}
-                  isExcluded={excludedTimeslots[rowIndex * 5 + columnIndex]}
-                  isEmpty={isTimeslotEmpty(rowIndex * 5 + columnIndex)}
-                  onClick={() => onCellClick(rowIndex * 5 + columnIndex)}
+                  colorStyle={getColorStyle(hIndex * TOTAL_DAYS + dIndex)}
+                  courseCode={getCourseCode(hIndex * TOTAL_DAYS + dIndex)}
+                  classroom={getClassroom(hIndex * TOTAL_DAYS + dIndex)}
+                  isExcluded={excludedTimeslots[hIndex * TOTAL_DAYS + dIndex]}
+                  isEmpty={isTimeslotEmpty(hIndex * TOTAL_DAYS + dIndex)}
+                  onClick={() => onCellClick(hIndex * TOTAL_DAYS + dIndex)}
                   key={`${hour}-${day}`}
                 />
               ))}

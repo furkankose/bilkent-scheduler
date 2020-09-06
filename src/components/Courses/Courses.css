@@ -4,6 +4,12 @@
   border-spacing: 0;
 }
 
+@media only screen and (max-width: 599px) {
+  #courses {
+    margin-bottom: 32px;
+  }
+}
+
 #courses tr {
   height: 47px;
 }
