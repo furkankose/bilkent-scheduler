@@ -1,16 +1,17 @@
-name: Release
+name: Deploy Functions
 
 on:
   push:
     branches:
       - master
 
+defaults:
+  run:
+    working-directory: ./functions
+
 jobs:
   release:
     runs-on: ubuntu-latest
-
-    env:
-      REACT_APP_GA_TRACKING_ID: "${{ secrets.REACT_APP_GA_TRACKING_ID }}"
 
     steps:
       - name: Checkout
@@ -21,9 +22,7 @@ jobs:
           node-version: "12.x"
       - name: Install
         run: yarn install
-      - name: Build
-        run: yarn build
       - name: Install Firebase
         run: sudo yarn global add firebase-tools
       - name: Deploy
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
