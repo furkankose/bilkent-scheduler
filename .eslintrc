@@ -5,6 +5,8 @@
   "rules": {
     "prettier/prettier": ["error"],
     "no-console": "warn",
+    "no-await-in-loop": "warn",
+    "import/prefer-default-export": "warn",
     "no-restricted-syntax": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
