@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - data
+    paths-ignore:
+      - "functions/**"
 
 jobs:
   release:
