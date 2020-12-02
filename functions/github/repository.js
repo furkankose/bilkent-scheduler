@@ -6,8 +6,14 @@ const cloneRepository = async (repositoryUrl) => {
     ...config,
     url: repositoryUrl,
     corsProxy: "https://cors.isomorphic-git.org",
-    singleBranch: true,
-    depth: 1,
+  });
+};
+
+const mergeMasterInto = async (branchName) => {
+  return git.merge({
+    ...config,
+    ours: branchName,
+    theirs: "remotes/origin/master",
   });
 };
 
@@ -22,4 +28,4 @@ const pushToRemote = async () => {
   return git.push(config);
 };
 
-export { cloneRepository, createNewCommit, pushToRemote };
+export { cloneRepository, mergeMasterInto, createNewCommit, pushToRemote };

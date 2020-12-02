@@ -2,9 +2,12 @@ import * as functions from "firebase-functions";
 
 import { scrape as scrapeApplicationData } from "./scraper";
 import {
+  cloneRepository,
+  mergeMasterInto,
+  findModifiedFiles,
+  checkoutFiles,
   findUnstagedFiles,
   stageFiles,
-  cloneRepository,
   createNewCommit,
   pushToRemote,
 } from "./github";
@@ -20,24 +23,31 @@ const updateApplicationData = functions
     console.log("Cloning repository...");
     await cloneRepository(process.env.GH_REPOSITORY_URL);
 
+    console.log("Merging master into data...");
+    await mergeMasterInto(`heads/${process.env.GH_BRANCH}`);
+
+    // isomorphic-git keeps the older version of the merged files in staging area
+    // that's why we need to checkout those files
+    const modifiedFiles = await findModifiedFiles();
+    await checkoutFiles(modifiedFiles);
+
     console.log("Scraping application data...");
     await scrapeApplicationData(`${process.env.PROJECT_PATH}/public/data`);
 
     console.log("Finding unstaged files...");
     const unstagedFiles = await findUnstagedFiles(["public/data"]);
 
-    if (unstagedFiles.length === 0) {
+    if (unstagedFiles.length > 0) {
+      console.log("Staging changes...");
+      await stageFiles(unstagedFiles);
+
+      console.log("Committing changes...");
+      await createNewCommit("chore: sync application data");
+    } else {
       console.log("No unstaged file found!");
-      return;
     }
 
-    console.log("Staging changes...");
-    await stageFiles(unstagedFiles);
-
-    console.log("Committing changes...");
-    await createNewCommit("chore: sync application data");
-
-    console.log("Pushing new commits...");
+    console.log("Pushing local branch to remote...");
     await pushToRemote();
   });
 

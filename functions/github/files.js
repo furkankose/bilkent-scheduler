@@ -1,6 +1,24 @@
 import git from "isomorphic-git";
 import config from "./config";
 
+const findModifiedFiles = async () => {
+  const statusMatrix = await git.statusMatrix({ ...config });
+
+  const modifiedFiles = statusMatrix
+    .filter(([, head, workdir]) => head !== workdir)
+    .map(([filename]) => filename);
+
+  return modifiedFiles;
+};
+
+const checkoutFiles = async (filePaths) => {
+  await Promise.all(
+    filePaths.map((filepath) =>
+      git.checkout({ ...config, force: true, filepath })
+    )
+  );
+};
+
 const findUnstagedFiles = async (filepaths) => {
   let statusMatrix = await git.statusMatrix({
     ...config,
@@ -20,4 +38,4 @@ const stageFiles = async (filePaths) => {
   );
 };
 
-export { findUnstagedFiles, stageFiles };
+export { findModifiedFiles, checkoutFiles, findUnstagedFiles, stageFiles };

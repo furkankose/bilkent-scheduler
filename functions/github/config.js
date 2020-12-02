@@ -5,6 +5,7 @@ const config = {
   fs,
   http,
   remote: "origin",
+  ref: process.env.GH_BRANCH,
   dir: process.env.PROJECT_PATH,
   author: {
     name: process.env.GH_AUTHOR_NAME,
