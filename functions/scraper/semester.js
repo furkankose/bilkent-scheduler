@@ -30,7 +30,7 @@ const findCurrentSemester = (registrationDates) => {
   const academicYear = beginningDateOfAcademicYear.split(" ").pop();
 
   const currentSemesterIndex = registrationDates
-    .map((date) => moment() > moment(date, "D MMMM YYYY"))
+    .map((date) => moment() > moment(date, "D MMMM YYYY").subtract(7, "days"))
     .lastIndexOf(true);
 
   if (currentSemesterIndex === -1) {
