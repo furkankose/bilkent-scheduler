@@ -42,8 +42,11 @@ const fetchAcademicCalendar = async () => {
 };
 
 const fetchDepartments = async () => {
-  const departmentsPage = await axios.get(`${API_URL}/plainCourseCodes.php`);
-  const $ = cheerio.load(departmentsPage.data);
+  const [departmentsPage] = await fetchPages([
+    `${API_URL}/plainCourseCodes.php`,
+  ]);
+
+  const $ = cheerio.load(departmentsPage);
 
   const departments = $("#ccTable tbody tr")
     .toArray()
