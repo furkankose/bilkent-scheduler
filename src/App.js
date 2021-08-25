@@ -171,7 +171,7 @@ const App = () => {
       <Container id="container">
         <Paper id="selectors" elevation={6} data-html2canvas-ignore>
           <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={4} lg={3}>
+            <Grid item xs={12} sm={4} md={4} lg={3}>
               <SemesterSelector
                 {...{
                   semesters,
@@ -180,7 +180,7 @@ const App = () => {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={8} lg={9}>
+            <Grid item xs={12} sm={4} md={5} lg={7}>
               <CourseSelector
                 {...{
                   offerings,
@@ -188,6 +188,21 @@ const App = () => {
                   onChange: setSelectedCourses,
                 }}
               />
+            </Grid>
+            <Grid item xs={12} sm={4} md={3} lg={2}>
+              <Link
+                href="http://www.buymeacoffee.com/scheduler"
+                id="coffee-button"
+                className="background"
+                target="_blank"
+              >
+                <img
+                  src="/icons/cup.png"
+                  alt="Buy me a coffee"
+                  id="coffee-icon"
+                />
+                Buy me a coffee
+              </Link>
             </Grid>
           </Grid>
         </Paper>

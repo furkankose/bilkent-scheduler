@@ -2,16 +2,6 @@ body {
   font-family: Montserrat;
   font-size: 13px;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(
-      45deg,
-      rgb(19, 73, 95),
-      rgb(118, 75, 226),
-      rgb(131, 115, 198),
-      rgb(119, 211, 185)
-    )
-    fixed;
 }
 
 #root {
@@ -35,9 +25,52 @@ body {
   margin-bottom: 24px;
 }
 
+.background {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+      45deg,
+      rgb(19, 73, 95),
+      rgb(118, 75, 226),
+      rgb(131, 115, 198),
+      rgb(119, 211, 185)
+    )
+    fixed;
+}
+
 #selectors {
   margin-bottom: 16px;
   padding: 16px;
+}
+
+#coffee-button {
+  display: inline-block;
+  width: calc(100% - 24px);
+  padding: 2px 12px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 36px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#coffee-button:hover {
+  opacity: 0.85;
+}
+
+#coffee-icon {
+  width: 20px;
+  height: 13px;
+  margin-right: 6px;
+}
+
+#coffee-icon {
+  height: 15px;
+  width: 22px;
+  animation: coffee-animation 3s infinite;
 }
 
 @media only screen and (max-width: 599px) {
@@ -97,4 +130,37 @@ body {
 .introjs-tooltipbuttons .introjs-donebutton {
   order: 1;
   margin-right: 0;
+}
+
+@keyframes coffee-animation {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(0) scale(1.15);
+  }
+  65% {
+    transform: rotate(0) scale(1.3);
+  }
+  70% {
+    transform: rotate(0) scale(1.3);
+  }
+  74% {
+    transform: rotate(-10deg) scale(1.3);
+  }
+  78% {
+    transform: rotate(10deg) scale(1.3);
+  }
+  82% {
+    transform: rotate(-10deg) scale(1.3);
+  }
+  86% {
+    transform: rotate(10deg) scale(1.3);
+  }
+  90% {
+    transform: rotate(0) scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
