@@ -190,11 +190,12 @@ const App = () => {
               />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2}>
-              <Link
-                href="http://www.buymeacoffee.com/scheduler"
+              <ReactGA.OutboundLink
+                eventLabel="coffee-button"
+                to="http://www.buymeacoffee.com/scheduler"
+                target="_blank"
                 id="coffee-button"
                 className="background"
-                target="_blank"
               >
                 <img
                   src="/icons/cup.png"
@@ -202,7 +203,7 @@ const App = () => {
                   id="coffee-icon"
                 />
                 Buy me a coffee
-              </Link>
+              </ReactGA.OutboundLink>
             </Grid>
           </Grid>
         </Paper>
