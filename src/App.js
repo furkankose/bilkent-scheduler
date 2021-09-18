@@ -8,7 +8,6 @@ import {
   Paper,
   Icon,
   IconButton,
-  Link,
   Box,
 } from "@material-ui/core";
 import { GitHub as GitHubIcon } from "@material-ui/icons";
@@ -281,12 +280,13 @@ const App = () => {
       </Container>
 
       <Box id="logo">
-        <Link
-          href="https://www.youtube.com/watch?v=XiLBOnqhGdY"
+        <ReactGA.OutboundLink
+          eventLabel="scheduler-logo"
+          to="https://www.youtube.com/watch?v=XiLBOnqhGdY"
           target="_blank"
         >
           <Logo />
-        </Link>
+        </ReactGA.OutboundLink>
       </Box>
     </>
   );
