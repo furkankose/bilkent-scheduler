@@ -37,15 +37,16 @@ const updateApplicationData = functions
     console.log("Finding unstaged files...");
     const unstagedFiles = await findUnstagedFiles(["public/data"]);
 
-    if (unstagedFiles.length > 0) {
-      console.log("Staging changes...");
-      await stageFiles(unstagedFiles);
-
-      console.log("Committing changes...");
-      await createNewCommit("chore: sync application data");
-    } else {
+    if (unstagedFiles.length === 0) {
       console.log("No unstaged file found!");
+      return;
     }
+
+    console.log("Staging changes...");
+    await stageFiles(unstagedFiles);
+
+    console.log("Committing changes...");
+    await createNewCommit("chore: sync application data");
 
     console.log("Pushing local branch to remote...");
     await pushToRemote();
