@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useLocalStorage, useUpdateEffect, useEffectOnce } from "react-use";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 import {
   Container,
@@ -9,6 +9,7 @@ import {
   Icon,
   IconButton,
   Box,
+  Link,
 } from "@material-ui/core";
 import { GitHub as GitHubIcon } from "@material-ui/icons";
 
@@ -137,7 +138,10 @@ const App = () => {
 
     if (process.env.NODE_ENV === "production") {
       ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      ReactGA.send({
+        hitType: "pageview",
+        page: window.location.pathname + window.location.search,
+      });
     }
 
     if (!isUserGuideCompleted) {
@@ -189,12 +193,11 @@ const App = () => {
               />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2}>
-              <ReactGA.OutboundLink
-                eventLabel="coffee-button"
-                to="http://www.buymeacoffee.com/scheduler"
-                target="_blank"
+              <Link
+                href="http://www.buymeacoffee.com/scheduler"
                 id="coffee-button"
                 className="background"
+                target="_blank"
               >
                 <img
                   src="/icons/cup.png"
@@ -202,7 +205,7 @@ const App = () => {
                   id="coffee-icon"
                 />
                 Buy me a coffee
-              </ReactGA.OutboundLink>
+              </Link>
             </Grid>
           </Grid>
         </Paper>
@@ -280,13 +283,12 @@ const App = () => {
       </Container>
 
       <Box id="logo">
-        <ReactGA.OutboundLink
-          eventLabel="scheduler-logo"
-          to="https://www.youtube.com/watch?v=XiLBOnqhGdY"
+        <Link
+          href="https://www.youtube.com/watch?v=XiLBOnqhGdY"
           target="_blank"
         >
           <Logo />
-        </ReactGA.OutboundLink>
+        </Link>
       </Box>
     </>
   );
