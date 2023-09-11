@@ -9,11 +9,11 @@ const cloneRepository = async (repositoryUrl) => {
   });
 };
 
-const mergeMasterInto = async (branchName) => {
+const mergeMainInto = async (branchName) => {
   return git.merge({
     ...config,
     ours: branchName,
-    theirs: "remotes/origin/master",
+    theirs: "remotes/origin/main",
   });
 };
 
@@ -28,4 +28,4 @@ const pushToRemote = async () => {
   return git.push(config);
 };
 
-export { cloneRepository, mergeMasterInto, createNewCommit, pushToRemote };
+export { cloneRepository, mergeMainInto, createNewCommit, pushToRemote };

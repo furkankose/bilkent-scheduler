@@ -3,7 +3,7 @@ import * as functions from "firebase-functions";
 import { scrape as scrapeApplicationData } from "./scraper";
 import {
   cloneRepository,
-  mergeMasterInto,
+  mergeMainInto,
   findModifiedFiles,
   checkoutFiles,
   findUnstagedFiles,
@@ -23,8 +23,8 @@ const updateApplicationData = functions
     console.log("Cloning repository...");
     await cloneRepository(process.env.GH_REPOSITORY_URL);
 
-    console.log("Merging master into data...");
-    await mergeMasterInto(`heads/${process.env.GH_BRANCH}`);
+    console.log("Merging main into data...");
+    await mergeMainInto(`heads/${process.env.GH_BRANCH}`);
 
     // isomorphic-git keeps the older version of the merged files in staging area
     // that's why we need to checkout those files

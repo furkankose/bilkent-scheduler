@@ -1,6 +1,6 @@
 # Bilkent Scheduler
 
-[Bilkent Scheduler](https://www.bilkentscheduler.com/) is a visualizer that makes Bilkent University students' lives easier during course registration. 
+[Bilkent Scheduler](https://www.bilkentscheduler.com/) is a visualizer that makes Bilkent University students' lives easier during course registration.
 
 ## Table of Contents
 
@@ -19,11 +19,11 @@ Data scraper part is responsible from ensuring that the application data is up t
 
 ### Visualizer
 
-Visualizer part is responsible from calculating and visualising all of the possible weekly schedules that result from selected courses. 
+Visualizer part is responsible from calculating and visualising all of the possible weekly schedules that result from selected courses.
 
 ## Project Architecture
 
-Both data scraper and visualizer runs on Firebase (Firebase Hosting, Firebase Functions). When a new commit is pushed to master, the continuous deployment pipelines that are created by using GitHub actions handle the deployment processes.
+Both data scraper and visualizer runs on Firebase (Firebase Hosting, Firebase Functions). When a new commit is pushed to main, the continuous deployment pipelines that are created by using GitHub actions handle the deployment processes.
 
 ## Features
 
