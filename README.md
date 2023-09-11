@@ -1,6 +1,8 @@
 # Bilkent Scheduler
 
-[Bilkent Scheduler](https://www.bilkentscheduler.com/) is a visualizer that makes Bilkent University students' lives easier during course registration.
+[Bilkent Scheduler](https://www.bilkentscheduler.com/) is an open-source tool designed to assist students at Bilkent University in planning their course schedules.
+
+This tool allows students to input the courses they wish to take and then generates possible schedules based on the times those courses are offered.
 
 ## Table of Contents
 
