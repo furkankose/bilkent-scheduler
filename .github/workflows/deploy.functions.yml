@@ -25,6 +25,6 @@ jobs:
       - name: Install
         run: yarn install
       - name: Install Firebase
-        run: sudo yarn global add firebase-tools
+        run: sudo yarn global add firebase-tools@12.9.1
       - name: Deploy
         run: firebase deploy --only functions --token ${{ secrets.FIREBASE_TOKEN }}
