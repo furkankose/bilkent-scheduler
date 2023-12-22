@@ -16,6 +16,11 @@ const scrape = async (OUTPUT_DIRECTORY) => {
   const OFFERINGS_DIRECTORY = `${OUTPUT_DIRECTORY}/offerings`;
 
   const departments = await fetchDepartments();
+
+  if (departments.length === 0) {
+    throw new Error("No departments fetched!");
+  }
+
   const academicCalendar = await fetchAcademicCalendar();
   const semesters = getSemesters(academicCalendar);
 
@@ -37,6 +42,10 @@ const scrape = async (OUTPUT_DIRECTORY) => {
       departments.map(({ code }) => code),
       semester.code
     );
+
+    if (offerings.length === 0) {
+      throw new Error("No offerings fetched!");
+    }
 
     const offeringsObject = mergeOfferingsIntoObject(offerings);
 
