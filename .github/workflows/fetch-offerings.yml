@@ -21,7 +21,7 @@ jobs:
         run: yarn install
       - name: Run Build Script
         working-directory: ./functions
-        run: node -r esm index.js
+        run: yarn fetch-offerings
       - name: Commit results
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
