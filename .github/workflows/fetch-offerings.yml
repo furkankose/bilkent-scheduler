@@ -17,10 +17,8 @@ jobs:
         with:
           node-version: "18"
       - name: Install Dependencies
-        working-directory: ./functions
         run: yarn install
       - name: Run Build Script
-        working-directory: ./functions
         run: yarn fetch-offerings
       - name: Commit results
         run: |

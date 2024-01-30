@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import merge from "merge-deep";
 import moment from "moment";
 import { promises as fs } from "fs";
 
@@ -102,32 +100,4 @@ const findSemestersNotFetchedBefore = async (offeringsDirectory, semesters) => {
   );
 };
 
-const mergeOfferingsIntoObject = (offerings) => {
-  const offeringsObjects = offerings.map((offering) => {
-    const { code, name, instructor, schedule } = offering;
-    const [courseCode, sectionNumber] = code.split("-");
-    const [departmentCode] = courseCode.split(" ");
-
-    return {
-      [departmentCode]: {
-        [courseCode]: {
-          name,
-          sections: {
-            [sectionNumber]: {
-              instructor,
-              schedule,
-            },
-          },
-        },
-      },
-    };
-  });
-
-  return merge(...offeringsObjects);
-};
-
-export {
-  getSemesters,
-  findSemestersNotFetchedBefore,
-  mergeOfferingsIntoObject,
-};
+export { getSemesters, findSemestersNotFetchedBefore };

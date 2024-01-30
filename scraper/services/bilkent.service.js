@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import reqque from "reqque";
 import cheerio from "cheerio";
 import merge from "merge-deep";

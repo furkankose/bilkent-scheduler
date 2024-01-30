@@ -1,16 +1,46 @@
+import merge from "merge-deep";
+import { promises as fs } from "fs";
+import { join } from "path";
+
 import {
   fetchAcademicCalendar,
   fetchDepartments,
   fetchOfferings,
-} from "./service";
+} from "./services/bilkent.service";
 
 import {
   getSemesters,
   findSemestersNotFetchedBefore,
-  mergeOfferingsIntoObject,
-} from "./semester";
+} from "./services/semester.service";
 
-import { writeJsonToFile } from "./utils";
+const writeJsonToFile = async (directory, fileName, json) => {
+  await fs.mkdir(directory, { recursive: true });
+  await fs.writeFile(`${directory}/${fileName}.json`, JSON.stringify(json));
+};
+
+const mergeOfferingsIntoObject = (offerings) => {
+  const offeringsObjects = offerings.map((offering) => {
+    const { code, name, instructor, schedule } = offering;
+    const [courseCode, sectionNumber] = code.split("-");
+    const [departmentCode] = courseCode.split(" ");
+
+    return {
+      [departmentCode]: {
+        [courseCode]: {
+          name,
+          sections: {
+            [sectionNumber]: {
+              instructor,
+              schedule,
+            },
+          },
+        },
+      },
+    };
+  });
+
+  return merge(...offeringsObjects);
+};
 
 const scrape = async (OUTPUT_DIRECTORY) => {
   const OFFERINGS_DIRECTORY = `${OUTPUT_DIRECTORY}/offerings`;
@@ -53,4 +83,6 @@ const scrape = async (OUTPUT_DIRECTORY) => {
   }
 };
 
-export { scrape };
+(async () => {
+  await scrape(join(__dirname, "../public/data"));
+})();

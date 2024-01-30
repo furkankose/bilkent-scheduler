@@ -10,7 +10,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "fetch-offerings": "node -r esm functions/index.js",
+    "fetch-offerings": "node -r esm scraper/index.js",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
