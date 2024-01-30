@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import reqque from "reqque";
 import cheerio from "cheerio";
 import merge from "merge-deep";
@@ -9,7 +10,8 @@ const fetchPages = async (pageUrls) => {
   console.log("Total", pageUrls.length);
   const pages = await reqque(
     pageUrls,
-    (pageUrl) => fetch(pageUrl).then((response) => response.ok && response.text()),
+    (pageUrl) =>
+      fetch(pageUrl).then((response) => response.ok && response.text()),
     {
       maxRetries: 10,
       batch: { size: { limit: 20 } },
@@ -21,15 +23,13 @@ const fetchPages = async (pageUrls) => {
 };
 
 const fetchAcademicCalendar = async () => {
-  const response = await fetch(
-    `${WEBSITE_URL}/bilkent/academic-calendar/`
-  );
+  const response = await fetch(`${WEBSITE_URL}/bilkent/academic-calendar/`);
 
-  if(!response.ok) {
-    throw new Error('Fetch error (academic-calendar)');
+  if (!response.ok) {
+    throw new Error("Fetch error (academic-calendar)");
   }
 
-  const academicCalendarPage = await response.text()
+  const academicCalendarPage = await response.text();
   const $ = cheerio.load(academicCalendarPage);
 
   const academicCalendar = $(".tablepress tbody tr")
@@ -46,7 +46,6 @@ const fetchDepartments = async () => {
   const [departmentsPage] = await fetchPages([
     `${API_URL}/plainCourseCodes.php`,
   ]);
-
 
   const $ = cheerio.load(departmentsPage);
 

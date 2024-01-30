@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import merge from "merge-deep";
 import moment from "moment";
 import { promises as fs } from "fs";
