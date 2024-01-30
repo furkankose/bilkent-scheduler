@@ -1,6 +1,4 @@
 import reqque from "reqque";
-import axios from "axios";
-import https from "https";
 import cheerio from "cheerio";
 import merge from "merge-deep";
 
@@ -11,7 +9,7 @@ const fetchPages = async (pageUrls) => {
   console.log("Total", pageUrls.length);
   const pages = await reqque(
     pageUrls,
-    (pageUrl) => axios.get(pageUrl).then(({ data }) => data),
+    (pageUrl) => fetch(pageUrl).then((response) => response.ok && response.text()),
     {
       maxRetries: 10,
       batch: { size: { limit: 20 } },
@@ -23,13 +21,16 @@ const fetchPages = async (pageUrls) => {
 };
 
 const fetchAcademicCalendar = async () => {
-  // https://github.com/axios/axios/issues/535
-  const httpsAgent = new https.Agent({ rejectUnauthorized: false });
-  const academicCalendarPage = await axios.get(
-    `${WEBSITE_URL}/bilkent/academic-calendar/`,
-    { httpsAgent }
+  const response = await fetch(
+    `${WEBSITE_URL}/bilkent/academic-calendar/`
   );
-  const $ = cheerio.load(academicCalendarPage.data);
+
+  if(!response.ok) {
+    throw new Error('Fetch error (academic-calendar)');
+  }
+
+  const academicCalendarPage = await response.text()
+  const $ = cheerio.load(academicCalendarPage);
 
   const academicCalendar = $(".tablepress tbody tr")
     .toArray()
@@ -45,6 +46,7 @@ const fetchDepartments = async () => {
   const [departmentsPage] = await fetchPages([
     `${API_URL}/plainCourseCodes.php`,
   ]);
+
 
   const $ = cheerio.load(departmentsPage);
 
