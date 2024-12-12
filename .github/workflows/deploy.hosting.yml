@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-      - data
     paths-ignore:
-      - "functions/**"
+      - "scraper/**"
 
 jobs:
   release:
