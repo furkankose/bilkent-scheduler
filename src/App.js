@@ -282,13 +282,23 @@ const App = () => {
         />
       </Container>
 
-      <Box id="logo">
-        <Link
-          href="https://www.youtube.com/watch?v=XiLBOnqhGdY"
-          target="_blank"
-        >
-          <Logo />
-        </Link>
+      <Box id="footer">
+        <Box id="logo">
+          <Link
+            href="https://www.youtube.com/watch?v=XiLBOnqhGdY"
+            target="_blank"
+          >
+            <Logo />
+          </Link>
+        </Box>
+        <Box id="coloring-pages-link">
+          <Link
+            href="https://coloringpagespro.com/coloring-pages"
+            target="_blank"
+          >
+            coloringpagespro.com
+          </Link>
+        </Box>
       </Box>
     </>
   );

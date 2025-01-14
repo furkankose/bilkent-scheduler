@@ -73,6 +73,26 @@ body {
   animation: coffee-animation 3s infinite;
 }
 
+#footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#coloring-pages-link {
+  opacity: 0.5;
+}
+
+#coloring-pages-link:hover {
+  opacity: 0.4;
+}
+
+#coloring-pages-link a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 599px) {
   #main {
     flex-direction: column-reverse;
