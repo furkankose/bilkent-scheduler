@@ -13,7 +13,7 @@ const fetchPages = async (pageUrls) => {
       fetch(pageUrl).then((response) => response.ok && response.text()),
     {
       maxRetries: 10,
-      batch: { size: { limit: 20 } },
+      batch: { size: { limit: 10 } },
       delay: { duration: { limit: 700 } },
     }
   );
