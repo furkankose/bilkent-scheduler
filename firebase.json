@@ -7,9 +7,13 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "redirects": [
+      {
+        "source": "https://www.bilkentscheduler.com/**",
+        "destination": "https://bilkentscheduler.com/:splat",
+        "type": 301
+      }
     ]
-  },
-  "functions": {
-    "source": "./functions"
   }
 }
