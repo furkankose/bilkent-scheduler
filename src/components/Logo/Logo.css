@@ -2,11 +2,10 @@
   display: inline-flex;
   align-items: center;
   height: 40px;
-  opacity: 0.5;
 }
 
 #bilkent-scheduler:hover {
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 #scheduler-title {

@@ -291,12 +291,10 @@ const App = () => {
             <Logo />
           </Link>
         </Box>
-        <Box id="coloring-pages-link">
-          <Link
-            href="https://coloringpagespro.com/coloring-pages"
-            target="_blank"
-          >
-            coloringpagespro.com
+        <Box id="sponsor-link">
+          sponsored by{" "}
+          <Link href="https://tojpg.net/" target="_blank">
+            tojpg.net
           </Link>
         </Box>
       </Box>

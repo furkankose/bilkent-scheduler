@@ -79,18 +79,18 @@ body {
   align-items: center;
 }
 
-#coloring-pages-link {
-  opacity: 0.5;
+#sponsor-link {
+  color: #fff;
 }
 
-#coloring-pages-link:hover {
-  opacity: 0.4;
-}
-
-#coloring-pages-link a {
+#sponsor-link a {
   color: #fff;
   font-weight: bold;
   text-decoration: none;
+}
+
+#sponsor-link a:hover {
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 599px) {
