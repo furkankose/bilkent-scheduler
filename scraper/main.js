@@ -74,7 +74,8 @@ const scrape = async (OUTPUT_DIRECTORY) => {
     );
 
     if (offerings.length === 0) {
-      throw new Error("No offerings fetched!");
+      console.log("No offerings fetched for semester", semester.code);
+      continue; // eslint-disable-line no-continue
     }
 
     const offeringsObject = mergeOfferingsIntoObject(offerings);
