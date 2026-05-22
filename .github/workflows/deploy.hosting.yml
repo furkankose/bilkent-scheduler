@@ -12,20 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      REACT_APP_GA_TRACKING_ID: "${{ secrets.REACT_APP_GA_TRACKING_ID }}"
+      REACT_APP_GA_TRACKING_ID: ${{ secrets.REACT_APP_GA_TRACKING_ID }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: "Use Node.js"
+
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install
-        run: yarn install
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Build
         run: yarn build
-      - name: Install Firebase
-        run: sudo yarn global add firebase-tools@12.9.1
-      - name: Deploy
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to Firebase Hosting
+        run: npx firebase-tools@12.9.1 deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
