@@ -23,7 +23,7 @@ const fetchPages = async (pageUrls) => {
 
 const fetchAcademicCalendar = async () => {
   const response = await fetch(
-    `${WEBSITE_URL}/bilkent/academic-calendar-2025-2026/`
+    `${WEBSITE_URL}/bilkent/academic-calendar-2026-2027/`
   );
 
   if (!response.ok) {
